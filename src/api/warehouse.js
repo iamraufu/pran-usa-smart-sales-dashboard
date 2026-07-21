@@ -23,20 +23,3 @@ export async function getWarehouseStock() {
 
   return response.data;
 }
-
-// export async function getWarehouseStock(){
-
-
-//     const response =
-//     await fetch(
-//         "/.netlify/functions/stock"
-//     );
-
-
-//     const data =
-//     await response.json();
-
-
-//     return data;
-
-// }
