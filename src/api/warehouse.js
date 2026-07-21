@@ -1,42 +1,42 @@
-// import axios from "axios";
+import axios from "axios";
 
-// export async function getWarehouseStock() {
-//   const response = await axios.post(
-//     "/warehouse/api/v3/DpoWiseStockDetails",
+export async function getWarehouseStock() {
+  const response = await axios.post(
+    "/warehouse/api/v3/DpoWiseStockDetails",
 
-//     new URLSearchParams({
-//       emp_id: "1457",
+    new URLSearchParams({
+      emp_id: "1457",
 
-//       country_id: "42",
-//     }),
+      country_id: "42",
+    }),
 
-//     {
-//       headers: {
-//         ApiKey: "f06ff43be3310989",
+    {
+      headers: {
+        ApiKey: "f06ff43be3310989",
 
-//         "App-Language": "en",
+        "App-Language": "en",
 
-//         "Content-Type": "application/x-www-form-urlencoded",
-//       },
-//     },
-//   );
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    },
+  );
 
-//   return response.data;
-// }
-
-export async function getWarehouseStock(){
-
-
-    const response =
-    await fetch(
-        "/.netlify/functions/stock"
-    );
-
-
-    const data =
-    await response.json();
-
-
-    return data;
-
+  return response.data;
 }
+
+// export async function getWarehouseStock(){
+
+
+//     const response =
+//     await fetch(
+//         "/.netlify/functions/stock"
+//     );
+
+
+//     const data =
+//     await response.json();
+
+
+//     return data;
+
+// }
