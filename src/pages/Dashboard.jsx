@@ -20,6 +20,8 @@ export default function Dashboard() {
 
   const [sort, setSort] = useState("nameAsc");
 
+  const [lastUpdated, setLastUpdated] = useState(null);
+
   useEffect(() => {
     async function loadProducts() {
       try {
@@ -76,6 +78,10 @@ export default function Dashboard() {
 
           outStock,
         });
+
+        // update last sync time
+
+        setLastUpdated(new Date());
       } catch (error) {
         console.log(error);
       } finally {
@@ -83,7 +89,19 @@ export default function Dashboard() {
       }
     }
 
+    // first load
+
     loadProducts();
+
+    // auto refresh every 60 seconds
+
+    const interval = setInterval(() => {
+      loadProducts();
+    }, 60000);
+
+    // cleanup when leaving page
+
+    return () => clearInterval(interval);
   }, []);
 
   // FILTER + SORT
@@ -259,15 +277,34 @@ p-4
 md:p-8
 "
     >
-      <h1
-        className="
+      <div className="flex items-center justify-between">
+
+
+<h1 className="
 text-3xl
 font-bold
 mb-8
-"
-      >
-        Warehouse Dashboard
-      </h1>
+">
+Warehouse Dashboard
+</h1>
+
+
+
+<p className="
+text-sm
+text-gray-500
+">
+
+Last Updated: 
+{
+lastUpdated &&
+lastUpdated.toLocaleTimeString()
+}
+
+</p>
+
+
+</div>
 
       {/* TOP CARDS */}
 
