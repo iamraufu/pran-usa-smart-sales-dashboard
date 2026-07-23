@@ -13,6 +13,12 @@ export default function Sidebar({ open, setOpen }) {
       path: "/products",
       icon: "📦",
     },
+
+    {
+      name: "Users",
+      path: "/users",
+      icon: "👥",
+    },
   ];
 
   return (

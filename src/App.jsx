@@ -5,6 +5,8 @@ import { useState } from "react";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import Sidebar from "./components/Sidebar";
+import Users from "./pages/Users";
+import UserProfile from "./pages/UserProfile";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -36,6 +38,8 @@ ${sidebarOpen ? "md:ml-72" : "md:ml-24"}
             <Route path="/" element={<Dashboard />} />
 
             <Route path="/products" element={<Products />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/users/:id" element={<UserProfile />} />
           </Routes>
         </main>
       </div>
