@@ -1,7 +1,9 @@
 import { useState } from "react";
 import users from "../../data/users";
-
+import { useNavigate } from "react-router-dom";
 export default function Users() {
+
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
 
@@ -504,9 +506,7 @@ getUserType(user.username) === "SR" && (
 
 <button
 
-onClick={()=>
-window.location.href=`/users/${user.emp_id}`
-}
+onClick={() => navigate(`/users/${user.emp_id}`)}
 
 className="
 text-xs
