@@ -55,12 +55,11 @@ text-white
 transition-all
 duration-300
 
-
-${open ? "w-72" : "w-24"}
-
+${open ? "translate-x-0" : "-translate-x-full"}
 
 md:translate-x-0
 
+${open ? "w-72" : "w-24"}
 `}
       >
         <div
@@ -129,18 +128,24 @@ text-gray-300
             {/* Toggle */}
 
             <button
-              onClick={() => setOpen(!open)}
-              className="
-w-10
-h-10
-rounded-xl
-bg-white/10
-hover:bg-white/20
-transition
-"
-            >
-              {open ? "◀" : "▶"}
-            </button>
+  onClick={() => setOpen(!open)}
+  className="
+  w-10
+  h-10
+  rounded-xl
+
+  bg-white/10
+  hover:bg-white/20
+
+  transition
+
+  flex
+  items-center
+  justify-center
+  "
+>
+  {open ? "✕" : "☰"}
+</button>
           </div>
 
           {/* Menu */}

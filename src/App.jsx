@@ -9,10 +9,31 @@ import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
 
 export default function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
 
   return (
     <BrowserRouter>
+    <button
+  onClick={() => setSidebarOpen(true)}
+  className="
+    md:hidden
+    fixed
+    bottom-6
+    right-6
+    z-50
+    h-14
+    w-14
+    rounded-full
+    bg-black
+    text-white
+    shadow-lg
+    flex
+    items-center
+    justify-center
+  "
+>
+  ☰
+</button>
       <div
         className="
 min-h-screen
