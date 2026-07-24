@@ -2,7 +2,6 @@ import { useState } from "react";
 import users from "../../data/users";
 import { useNavigate } from "react-router-dom";
 export default function Users() {
-
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
@@ -44,45 +43,42 @@ export default function Users() {
 
   return (
     <div className="space-y-6">
-     {/* Header */}
+      {/* Header */}
 
-<div>
-
-<h1 className="
+      <div>
+        <h1
+          className="
 text-2xl
 font-bold
 text-gray-800
-">
-Users
-</h1>
+"
+        >
+          Users
+        </h1>
 
-
-<p className="
+        <p
+          className="
 text-sm
 text-gray-500
 mt-1
-">
-Manage employees and sales representatives
-</p>
+"
+        >
+          Manage employees and sales representatives
+        </p>
+      </div>
 
+      {/* Stats */}
 
-</div>
-
-
-
-
-
-{/* Stats */}
-
-<div className="
+      <div
+        className="
 grid
 grid-cols-1
 sm:grid-cols-3
 gap-4
-">
-
-
-<div className="
+"
+      >
+        <div
+          className="
 bg-white
 rounded-2xl
 p-4
@@ -90,9 +86,10 @@ border
 flex
 items-center
 gap-4
-">
-
-<div className="
+"
+        >
+          <div
+            className="
 w-11
 h-11
 rounded-xl
@@ -101,40 +98,35 @@ flex
 items-center
 justify-center
 text-xl
-">
-👥
-</div>
+"
+          >
+            👥
+          </div>
 
-
-<div>
-
-<p className="
+          <div>
+            <p
+              className="
 text-xs
 text-gray-500
-">
-Total Employees
-</p>
+"
+            >
+              Total Employees
+            </p>
 
-
-<p className="
+            <p
+              className="
 text-xl
 font-bold
 text-gray-800
-">
-{users.length}
-</p>
+"
+            >
+              {users.length}
+            </p>
+          </div>
+        </div>
 
-</div>
-
-
-</div>
-
-
-
-
-
-
-<div className="
+        <div
+          className="
 bg-white
 rounded-2xl
 p-4
@@ -142,9 +134,10 @@ border
 flex
 items-center
 gap-4
-">
-
-<div className="
+"
+        >
+          <div
+            className="
 w-11
 h-11
 rounded-xl
@@ -153,41 +146,35 @@ flex
 items-center
 justify-center
 text-xl
-">
-🧑‍💼
-</div>
+"
+          >
+            🧑‍💼
+          </div>
 
-
-<div>
-
-<p className="
+          <div>
+            <p
+              className="
 text-xs
 text-gray-500
-">
-Sales Representatives
-</p>
+"
+            >
+              Sales Representatives
+            </p>
 
-
-<p className="
+            <p
+              className="
 text-xl
 font-bold
 text-gray-800
-">
-{srCount}
-</p>
+"
+            >
+              {srCount}
+            </p>
+          </div>
+        </div>
 
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-<div className="
+        <div
+          className="
 bg-white
 rounded-2xl
 p-4
@@ -195,9 +182,10 @@ border
 flex
 items-center
 gap-4
-">
-
-<div className="
+"
+        >
+          <div
+            className="
 w-11
 h-11
 rounded-xl
@@ -206,48 +194,38 @@ flex
 items-center
 justify-center
 text-xl
-">
-👤
-</div>
+"
+          >
+            👤
+          </div>
 
-
-<div>
-
-<p className="
+          <div>
+            <p
+              className="
 text-xs
 text-gray-500
-">
-Employees
-</p>
+"
+            >
+              Employees
+            </p>
 
-
-<p className="
+            <p
+              className="
 text-xl
 font-bold
 text-gray-800
-">
-{employeeCount}
-</p>
+"
+            >
+              {employeeCount}
+            </p>
+          </div>
+        </div>
+      </div>
 
-</div>
+      {/* Search and Filter */}
 
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
-{/* Search and Filter */}
-
-<div className="
+      <div
+        className="
 bg-white
 rounded-2xl
 border
@@ -256,36 +234,32 @@ flex
 flex-col
 md:flex-row
 gap-3
-">
-
-
-<div className="
+"
+      >
+        <div
+          className="
 relative
 flex-1
-">
-
-
-<span className="
+"
+        >
+          <span
+            className="
 absolute
 left-3
 top-2.5
 text-gray-400
-">
-🔍
-</span>
+"
+          >
+            🔍
+          </span>
 
-
-<input
-
-value={search}
-
-onChange={(e)=>setSearch(e.target.value)}
-
-placeholder="
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="
 Search employee...
 "
-
-className="
+            className="
 w-full
 pl-10
 pr-4
@@ -297,28 +271,14 @@ outline-none
 focus:ring-2
 focus:ring-blue-100
 "
+          />
+        </div>
 
- />
-
-
-</div>
-
-
-
-
-
-
-
-<div className="relative">
-
-
-<select
-
-value={filter}
-
-onChange={(e)=>setFilter(e.target.value)}
-
-className="
+        <div className="relative">
+          <select
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className="
 appearance-none
 w-full
 md:w-48
@@ -332,45 +292,27 @@ text-sm
 outline-none
 cursor-pointer
 "
+          >
+            <option value="All">All Users</option>
 
->
+            <option value="SR">Sales Representatives</option>
 
+            <option value="Employee">Employees</option>
+          </select>
 
-<option value="All">
-All Users
-</option>
-
-
-<option value="SR">
-Sales Representatives
-</option>
-
-
-<option value="Employee">
-Employees
-</option>
-
-
-</select>
-
-
-
-<span className="
+          <span
+            className="
 absolute
 right-3
 top-3
 text-gray-400
 pointer-events-none
-">
-⌄
-</span>
-
-
-</div>
-
-
-
-</div>
+"
+          >
+            ⌄
+          </span>
+        </div>
+      </div>
 
       {/* User Cards */}
 
@@ -480,53 +422,42 @@ pointer-events-none
               </div>
             </div>
 
-            <div className="
+            <div
+              className="
 mt-3
 pt-3
 border-t
 flex
 items-center
 justify-between
-">
-
-
-<span className="
+"
+            >
+              <span
+                className="
 text-xs
 text-gray-500
-">
+"
+              >
+                🏷 {getUserType(user.username)}
+              </span>
 
-🏷 {getUserType(user.username)}
-
-</span>
-
-
-
-{
-getUserType(user.username) === "SR" && (
-
-<button
-
-onClick={() => navigate(`/users/${user.emp_id}`)}
-
-className="
+              {getUserType(user.username) === "SR" && (
+                <button
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                    navigate(`/users/${user.emp_id}`);
+                  }}
+                  className="
 text-xs
 text-blue-600
 hover:text-blue-800
 font-medium
 "
-
->
-
-View Profile →
-
-</button>
-
-)
-
-}
-
-
-</div>
+                >
+                  View Profile →
+                </button>
+              )}
+            </div>
           </div>
         ))}
       </div>
