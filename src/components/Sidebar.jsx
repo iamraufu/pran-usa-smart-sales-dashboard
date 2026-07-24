@@ -24,100 +24,102 @@ export default function Sidebar({ open, setOpen }) {
   return (
     <>
       {/* Mobile Overlay */}
-
       {open && (
         <div
           className="
-fixed
-inset-0
-bg-black/40
-z-40
-md:hidden
-"
+          fixed
+          inset-0
+          bg-black/40
+          z-40
+          md:hidden
+          "
           onClick={() => setOpen(false)}
-        ></div>
+        />
       )}
 
       <aside
         className={`
-fixed
-top-0
-left-0
-h-screen
-z-50
+        fixed
+        top-0
+        left-0
+        h-screen
+        z-50
 
-bg-gradient-to-b
-from-slate-900
-to-slate-800
+        bg-gradient-to-b
+        from-slate-900
+        to-slate-800
 
-text-white
+        text-white
 
-transition-all
-duration-300
+        transition-all
+        duration-300
+        ease-in-out
 
-${open ? "translate-x-0" : "-translate-x-full"}
+        ${open ? "w-72 translate-x-0" : "w-20 translate-x-0"}
 
-md:translate-x-0
-
-${open ? "w-72" : "w-24"}
-`}
+        md:${open ? "w-72" : "w-24"}
+        `}
       >
         <div
           className="
-h-full
-flex
-flex-col
-p-4
-"
+          h-full
+          flex
+          flex-col
+          p-4
+          "
         >
-          {/* Logo */}
-
+          {/* LOGO */}
           <div
             className="
-flex
-items-center
-justify-between
-mb-8
-"
+            flex
+            items-center
+            justify-between
+            mb-8
+            "
           >
             <div
+              onClick={() => {
+                setOpen(true);
+              }}
               className="
-flex
-items-center
-gap-3
-"
+              flex
+              items-center
+              gap-3
+              cursor-pointer
+              "
             >
               <div
                 className="
-w-12
-h-12
-rounded-2xl
-bg-blue-600
-flex
-items-center
-justify-center
-text-2xl
-"
+                w-12
+                h-12
+                rounded-2xl
+                bg-blue-600
+                flex
+                items-center
+                justify-center
+                text-2xl
+                shrink-0
+                "
               >
                 📦
               </div>
 
               {open && (
-                <div className="">
+                <div>
                   <h1
                     className="
-font-bold
-text-lg
-"
+                    font-bold
+                    text-lg
+                    "
                   >
                     Smart Sales
                   </h1>
 
                   <p
                     className="
-text-xs
-text-gray-300
-"
+                    text-xs
+                    text-gray-300
+                    "
                   >
                     Dashboard
                   </p>
@@ -125,72 +127,75 @@ text-gray-300
               )}
             </div>
 
-            {/* Toggle */}
-
-            <button
-              onClick={() => setOpen(!open)}
-              className="
-  w-10
-  h-10
-  rounded-xl
-
-  bg-white/10
-  hover:bg-white/20
-
-  transition
-
-  flex
-  items-center
-  justify-center
-  "
-            >
-              {open ? "✕" : "☰"}
-            </button>
+            {/* CLOSE BUTTON */}
+            {open && (
+              <button
+                onClick={() => setOpen(false)}
+                className="
+                w-10
+                h-10
+                rounded-xl
+                bg-white/10
+                hover:bg-white/20
+                transition
+                flex
+                items-center
+                justify-center
+                "
+              >
+                ✕
+              </button>
+            )}
           </div>
 
-          {/* Menu */}
+          {/* MENU */}
 
           <nav
             className="
-space-y-3
-"
+            space-y-3
+            "
           >
             {menu.map((item) => (
               <NavLink
+                key={item.path}
+                to={item.path}
                 onClick={() => {
                   window.scrollTo(0, 0);
+
                   if (window.innerWidth < 768) {
                     setOpen(false);
                   }
                 }}
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) =>
-                  `
+                className={({ isActive }) => `
 
-flex
-items-center
-rounded-2xl
-p-3
-transition
-justify-center
+                flex
+                items-center
 
+                ${open ? "justify-start" : "justify-center"}
 
-${isActive ? "bg-blue-600 shadow-lg" : "hover:bg-white/10"}
+                gap-3
 
-`
-                }
+                rounded-2xl
+
+                p-3
+
+                transition
+
+                ${isActive ? "bg-blue-600 shadow-lg" : "hover:bg-white/10"}
+
+                `}
               >
                 <span
                   className="
-text-2xl
-w-12
-h-12
-flex
-items-center
-justify-center
-rounded-xl
-"
+                  text-2xl
+                  w-12
+                  h-12
+                  flex
+                  items-center
+                  justify-center
+                  rounded-xl
+                  shrink-0
+                  "
                 >
                   {item.icon}
                 </span>
@@ -198,9 +203,8 @@ rounded-xl
                 {open && (
                   <span
                     className="
-font-medium
-ml-1
-"
+                    font-medium
+                    "
                   >
                     {item.name}
                   </span>
@@ -209,33 +213,38 @@ ml-1
             ))}
           </nav>
 
-          {/* Bottom */}
+          {/* Bottom User Section */}
 
           <div
-            className="
-mt-auto
-bg-white/10
-rounded-2xl
-p-3
-"
+            className={`
+  mt-auto
+  rounded-2xl
+  transition-all
+  duration-300
+
+  ${open ? "bg-white/10 p-3" : "p-0"}
+  `}
           >
             <div
-              className="
-flex
-items-center
-gap-3
-"
+              className={`
+    flex
+    items-center
+
+    ${open ? "gap-3" : "justify-center"}
+    `}
             >
               <div
                 className="
-w-10
-h-10
-rounded-full
-bg-blue-500
-flex
-items-center
-justify-center
-"
+      w-10
+      h-10
+      rounded-full
+      bg-blue-500
+      flex
+      items-center
+      justify-center
+      shrink-0
+      text-lg
+      "
               >
                 👤
               </div>
@@ -244,20 +253,20 @@ justify-center
                 <div>
                   <p
                     className="
-font-semibold
-text-sm
-"
+          font-semibold
+          text-sm
+          "
                   >
                     Eftykhar Rahman
                   </p>
 
                   <p
                     className="
-text-xs
-text-gray-300
-"
+          text-xs
+          text-gray-300
+          "
                   >
-                    ID:1457
+                    ID: 1457
                   </p>
                 </div>
               )}
