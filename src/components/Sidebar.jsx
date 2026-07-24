@@ -128,8 +128,8 @@ text-gray-300
             {/* Toggle */}
 
             <button
-  onClick={() => setOpen(!open)}
-  className="
+              onClick={() => setOpen(!open)}
+              className="
   w-10
   h-10
   rounded-xl
@@ -143,9 +143,9 @@ text-gray-300
   items-center
   justify-center
   "
->
-  {open ? "✕" : "☰"}
-</button>
+            >
+              {open ? "✕" : "☰"}
+            </button>
           </div>
 
           {/* Menu */}
@@ -157,9 +157,12 @@ space-y-3
           >
             {menu.map((item) => (
               <NavLink
-              onClick={() => {
-  window.scrollTo(0, 0);
-}}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  if (window.innerWidth < 768) {
+                    setOpen(false);
+                  }
+                }}
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
