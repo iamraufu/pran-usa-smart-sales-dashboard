@@ -13,7 +13,10 @@ export default function UserHeader({ user, navigate }) {
         {/* Left */}
         <div className="flex items-center gap-4">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => {
+              window.scrollTo(0, 0);
+              navigate(-1);
+            }}
             className="h-10 w-10 rounded-xl border flex items-center justify-center hover:bg-gray-50 transition"
           >
             <ArrowLeft size={18} />

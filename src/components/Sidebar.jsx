@@ -157,6 +157,9 @@ space-y-3
           >
             {menu.map((item) => (
               <NavLink
+              onClick={() => {
+  window.scrollTo(0, 0);
+}}
                 key={item.path}
                 to={item.path}
                 className={({ isActive }) =>
