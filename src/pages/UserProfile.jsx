@@ -11,6 +11,7 @@ import RouteAssignments from "../components/userProfile/RouteAssignments";
 import Attendance from "../components/userProfile/Attendance";
 import { getUserDashboard } from "../api/dashboard";
 import PerformanceOverview from "../components/userProfile/PerformanceOverview";
+import PerformanceLoading from "../components/PerformanceLoading";
 
 export default function UserProfile() {
   const { id } = useParams();
@@ -107,10 +108,11 @@ export default function UserProfile() {
         attendanceSummary={attendanceSummary}
       />
 
-      <PerformanceOverview
-        summary={dashboardSummary}
-        loading={dashboardLoading}
-      />
+      {dashboardLoading ? (
+        <PerformanceLoading />
+      ) : (
+        <PerformanceOverview summary={dashboardSummary} />
+      )}
 
       <Attendance
         summary={attendanceSummary}

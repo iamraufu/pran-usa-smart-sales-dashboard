@@ -13,27 +13,30 @@ export default function App() {
 
   return (
     <BrowserRouter>
-    <button
-  onClick={() => setSidebarOpen(true)}
-  className="
-    md:hidden
-    fixed
-    bottom-6
-    right-6
-    z-50
-    h-14
-    w-14
-    rounded-full
-    bg-black
-    text-white
-    shadow-lg
-    flex
-    items-center
-    justify-center
+      <button
+        onClick={() => setSidebarOpen(true)}
+        className="
+  md:hidden
+  fixed
+  bottom-5
+  right-5
+  z-[60]
+  h-14
+  w-14
+  rounded-full
+  bg-blue-600
+  text-white
+  shadow-xl
+  flex
+  items-center
+  justify-center
+  text-xl
+  hover:scale-105
+  transition
   "
->
-  ☰
-</button>
+      >
+        ☰
+      </button>
       <div
         className="
 min-h-screen

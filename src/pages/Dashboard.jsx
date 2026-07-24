@@ -278,33 +278,26 @@ md:p-8
 "
     >
       <div className="flex items-center justify-between">
-
-
-<h1 className="
+        <h1
+          className="
 text-3xl
 font-bold
 mb-8
-">
-Warehouse Dashboard
-</h1>
+"
+        >
+          Warehouse Dashboard
+        </h1>
 
-
-
-<p className="
+        <p
+          className="
 text-sm
 text-gray-500
-">
-
-Last Updated: 
-{
-lastUpdated &&
-lastUpdated.toLocaleTimeString()
-}
-
-</p>
-
-
-</div>
+"
+        >
+          Last Updated:
+          {lastUpdated && lastUpdated.toLocaleTimeString()}
+        </p>
+      </div>
 
       {/* TOP CARDS */}
 

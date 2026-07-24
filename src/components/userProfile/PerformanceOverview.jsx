@@ -1,30 +1,6 @@
 import ProfileStatCard from "./ProfileStatCard";
 
-export default function PerformanceOverview({ summary, loading }) {
-  if (loading) {
-    return (
-      <div
-        className="
-        grid
-        grid-cols-2
-        lg:grid-cols-4
-        gap-4
-      "
-      >
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-          <div
-            key={i}
-            className="
-            h-28
-            bg-gray-100
-            rounded-xl
-            animate-pulse
-          "
-          />
-        ))}
-      </div>
-    );
-  }
+export default function PerformanceOverview({ summary}) {
 
   if (!summary) return null;
 
@@ -75,12 +51,12 @@ export default function PerformanceOverview({ summary, loading }) {
           value={`${summary.visitPercent}%`}
         />
 
-        <ProfileStatCard icon="🛒" title="Orders" value={summary.totalOrder} />
+        <ProfileStatCard icon="🛒" title="Orders" value={summary.totalOrder > 0 ? summary.totalOrder : 0} />
 
         <ProfileStatCard
           icon="💰"
           title="Sales"
-          value={`$${current.toFixed(2)}`}
+          value={`$${(current.toFixed(2)*1000).toLocaleString('en-us')}`}
         />
 
         <ProfileStatCard icon="🏪" title="Stores" value={summary.totalSite} />
@@ -88,19 +64,19 @@ export default function PerformanceOverview({ summary, loading }) {
         <ProfileStatCard
           icon="📍"
           title="Visits"
-          value={summary.totalVisited}
+          value={summary.totalVisited > 0 ? summary.totalVisited : 0}
         />
 
         <ProfileStatCard
           icon="📦"
           title="SKU Lines"
-          value={summary.numberItemLine}
+          value={summary.numberItemLine > 0 ? summary.numberItemLine : 0}
         />
 
         <ProfileStatCard
           icon="📊"
           title="Line / Call"
-          value={summary.lineParCall}
+          value={summary.lineParCall > 0 ? summary.lineParCall : 0}
         />
       </div>
 
