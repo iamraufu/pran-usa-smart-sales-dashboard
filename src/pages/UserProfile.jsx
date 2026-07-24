@@ -11,7 +11,10 @@ import RouteAssignments from "../components/userProfile/RouteAssignments";
 import Attendance from "../components/userProfile/Attendance";
 import { getUserDashboard } from "../api/dashboard";
 import PerformanceOverview from "../components/userProfile/PerformanceOverview";
-import PerformanceLoading from "../components/PerformanceLoading";
+import PerformanceLoading from "../components/loading/PerformanceLoading";
+import UserDateFilter from "../components/UserDateFilter";
+import AttendanceLoading from "../components/loading/AttendanceLoading";
+import RouteLoading from "../components/loading/RouteLoading";
 
 export default function UserProfile() {
   const { id } = useParams();
@@ -20,7 +23,7 @@ export default function UserProfile() {
 
   const user = users.find((u) => u.emp_id.toString() === id);
 
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date().toLocaleDateString("en-CA");
 
   const [routes, setRoutes] = useState([]);
 
@@ -108,22 +111,37 @@ export default function UserProfile() {
         attendanceSummary={attendanceSummary}
       />
 
+      <UserDateFilter
+        startDate={startDate}
+        setStartDate={setStartDate}
+        endDate={endDate}
+        setEndDate={setEndDate}
+      />
+
       {dashboardLoading ? (
         <PerformanceLoading />
       ) : (
         <PerformanceOverview summary={dashboardSummary} />
       )}
 
-      <Attendance
-        summary={attendanceSummary}
-        details={attendanceDetails}
-        loading={attendanceLoading}
-        startDate={startDate}
-        endDate={endDate}
-        setStartDate={setStartDate}
-        setEndDate={setEndDate}
-      />
-      <RouteAssignments routes={routes} loading={routeLoading} />
+      {attendanceLoading ? (
+        <AttendanceLoading />
+      ) : (
+        <Attendance
+          summary={attendanceSummary}
+          details={attendanceDetails}
+          loading={attendanceLoading}
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+        />
+      )}
+      {routes.length > 0 ? (
+        <RouteAssignments routes={routes} loading={routeLoading} />
+      ) : (
+        <RouteLoading />
+      )}
     </div>
   );
 }
