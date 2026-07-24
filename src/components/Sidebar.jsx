@@ -39,26 +39,29 @@ export default function Sidebar({ open, setOpen }) {
 
       <aside
         className={`
-        fixed
-        top-0
-        left-0
-        h-screen
-        z-50
+    fixed
+    top-0
+    left-0
+    h-screen
+    z-50
 
-        bg-gradient-to-b
-        from-slate-900
-        to-slate-800
+    bg-gradient-to-b
+    from-slate-900
+    to-slate-800
 
-        text-white
+    text-white
 
-        transition-all
-        duration-300
-        ease-in-out
+    transition-transform
+    duration-300
+    ease-in-out
 
-        ${open ? "w-72 translate-x-0" : "w-20 translate-x-0"}
+    ${open ? "translate-x-0" : "-translate-x-full"}
 
-        md:${open ? "w-72" : "w-24"}
-        `}
+    w-72
+
+    md:translate-x-0
+    ${open ? "md:w-72" : "md:w-24"}
+  `}
       >
         <div
           className="
@@ -81,25 +84,26 @@ export default function Sidebar({ open, setOpen }) {
               onClick={() => {
                 setOpen(true);
               }}
-              className="
-              flex
-              items-center
-              gap-3
-              cursor-pointer
-              "
+              className={`
+    flex
+    items-center
+    cursor-pointer
+
+    ${open ? "gap-3" : "justify-center w-full"}
+  `}
             >
               <div
                 className="
-                w-12
-                h-12
-                rounded-2xl
-                bg-blue-600
-                flex
-                items-center
-                justify-center
-                text-2xl
-                shrink-0
-                "
+    w-12
+    h-12
+    rounded-2xl
+    bg-blue-600
+    flex
+    items-center
+    justify-center
+    text-2xl
+    shrink-0
+  "
               >
                 📦
               </div>

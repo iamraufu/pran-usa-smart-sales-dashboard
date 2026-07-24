@@ -455,6 +455,7 @@ text-xs
 text-blue-600
 hover:text-blue-800
 font-medium
+cursor-pointer
 "
                 >
                   View Profile →

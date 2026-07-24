@@ -17,7 +17,7 @@ export default function UserHeader({ user, navigate }) {
               window.scrollTo(0, 0);
               navigate(-1);
             }}
-            className="h-10 w-10 rounded-xl border flex items-center justify-center hover:bg-gray-50 transition"
+            className="h-10 w-10 rounded-xl border flex items-center justify-center hover:bg-gray-50 transition cursor-pointer"
           >
             <ArrowLeft size={18} />
           </button>
