@@ -277,7 +277,10 @@ focus:ring-blue-100
         <div className="relative">
           <select
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            onChange={(e) => {
+              setFilter(e.target.value)
+              window.scrollTo(0, 0);
+            }}
             className="
 appearance-none
 w-full
