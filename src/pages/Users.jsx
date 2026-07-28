@@ -447,8 +447,8 @@ text-gray-500
               {getUserType(user.username) === "SR" && (
                 <button
                   onClick={() => {
-                    window.scrollTo(0, 0);
                     navigate(`/users/${user.emp_id}`);
+                    window.scrollTo(0, 0);
                   }}
                   className="
 text-xs

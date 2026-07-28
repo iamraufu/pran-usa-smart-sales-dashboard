@@ -5,6 +5,7 @@ import users from "../../data/users";
 
 import { getSRRoute } from "../api/routes";
 import { getUserAttendance } from "../api/attendance";
+import { getUserTimeline } from "../api/timeline";
 
 import UserHeader from "../components/userProfile/UserHeader";
 import RouteAssignments from "../components/userProfile/RouteAssignments";
@@ -15,6 +16,7 @@ import PerformanceLoading from "../components/loading/PerformanceLoading";
 import UserDateFilter from "../components/UserDateFilter";
 import AttendanceLoading from "../components/loading/AttendanceLoading";
 import RouteLoading from "../components/loading/RouteLoading";
+import Timeline from "../components/userProfile/Timeline";
 
 export default function UserProfile() {
   const { id } = useParams();
@@ -41,6 +43,9 @@ export default function UserProfile() {
   const [dashboardLoading, setDashboardLoading] = useState(true);
 
   const [dashboardSummary, setDashboardSummary] = useState(null);
+  const [timelineLoading, setTimelineLoading] = useState(true);
+
+  const [timelineData, setTimelineData] = useState([]);
 
   useEffect(() => {
     async function loadRoutes() {
@@ -99,6 +104,26 @@ export default function UserProfile() {
       loadDashboard();
     }
   }, [user, startDate, endDate]);
+  
+  useEffect(() => {
+    async function loadTimeline() {
+      try {
+        setTimelineLoading(true);
+
+        const data = await getUserTimeline(user.emp_id, endDate);
+
+        setTimelineData(data.timeline_summery || []);
+      } catch (error) {
+        console.log("Timeline Error", error);
+      } finally {
+        setTimelineLoading(false);
+      }
+    }
+
+    if (user) {
+      loadTimeline();
+    }
+  }, [user, endDate]);
 
   if (!user) return <div>User not found</div>;
 
@@ -137,6 +162,7 @@ export default function UserProfile() {
           setEndDate={setEndDate}
         />
       )}
+      <Timeline loading={timelineLoading} data={timelineData} />
       {routes.length > 0 ? (
         <RouteAssignments routes={routes} loading={routeLoading} />
       ) : (

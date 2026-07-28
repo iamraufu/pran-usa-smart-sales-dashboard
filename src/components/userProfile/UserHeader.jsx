@@ -14,8 +14,8 @@ export default function UserHeader({ user, navigate }) {
         <div className="flex items-center gap-4">
           <button
             onClick={() => {
-              window.scrollTo(0, 0);
               navigate(-1);
+              window.scrollTo(0, 0);
             }}
             className="h-10 w-10 rounded-xl border flex items-center justify-center hover:bg-gray-50 transition cursor-pointer"
           >
