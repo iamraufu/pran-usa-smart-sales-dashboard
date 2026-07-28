@@ -7,6 +7,7 @@ import Products from "./pages/Products";
 import Sidebar from "./components/Sidebar";
 import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
+import Performance from "./pages/Performance";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
@@ -64,6 +65,7 @@ ${sidebarOpen ? "md:ml-72" : "md:ml-24"}
             <Route path="/products" element={<Products />} />
             <Route path="/users" element={<Users />} />
             <Route path="/users/:id" element={<UserProfile />} />
+            <Route path="/performance" element={<Performance />} />
           </Routes>
         </main>
       </div>

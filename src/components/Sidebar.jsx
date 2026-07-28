@@ -19,6 +19,11 @@ export default function Sidebar({ open, setOpen }) {
       path: "/users",
       icon: "👥",
     },
+    {
+      name: "Performance",
+      path: "/performance",
+      icon: "🏆",
+    },
   ];
 
   return (
