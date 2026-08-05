@@ -47,6 +47,8 @@ export default function UserProfile() {
 
   const [timelineData, setTimelineData] = useState([]);
 
+  const [timelineDate, setTimelineDate] = useState(today);
+
   useEffect(() => {
     async function loadRoutes() {
       try {
@@ -104,13 +106,13 @@ export default function UserProfile() {
       loadDashboard();
     }
   }, [user, startDate, endDate]);
-  
+
   useEffect(() => {
     async function loadTimeline() {
       try {
         setTimelineLoading(true);
 
-        const data = await getUserTimeline(user.emp_id, endDate);
+        const data = await getUserTimeline(user.emp_id, timelineDate);
 
         setTimelineData(data.timeline_summery || []);
       } catch (error) {
@@ -123,7 +125,7 @@ export default function UserProfile() {
     if (user) {
       loadTimeline();
     }
-  }, [user, endDate]);
+  }, [user, timelineDate]);
 
   if (!user) return <div>User not found</div>;
 
@@ -162,6 +164,39 @@ export default function UserProfile() {
           setEndDate={setEndDate}
         />
       )}
+      <div
+        className="
+  bg-white
+  rounded-2xl
+  border
+  p-4
+  "
+      >
+        <label
+          className="
+    text-sm
+    text-gray-600
+    block
+    mb-2
+        font-bold
+    "
+        >
+          Timeline Date
+        </label>
+
+        <input
+          type="date"
+          value={timelineDate}
+          onChange={(e) => setTimelineDate(e.target.value)}
+          className="
+    border
+    rounded-lg
+    px-3
+    py-2
+    "
+        />
+      </div>
+
       <Timeline loading={timelineLoading} data={timelineData} />
       {routes.length > 0 ? (
         <RouteAssignments routes={routes} loading={routeLoading} />

@@ -13,6 +13,16 @@ export default function UserDateFilter({
         p-5
         "
     >
+      <span
+        className="
+        block
+        text-xs
+        text-gray-500
+        mb-1 font-bold"
+      >
+        Performance Overview Date Range
+      </span>
+
       <div
         className="
         flex
