@@ -199,7 +199,7 @@ export default function UserProfile() {
 
       <Timeline loading={timelineLoading} data={timelineData} />
       {routes.length > 0 ? (
-        <RouteAssignments routes={routes} loading={routeLoading} />
+        <RouteAssignments routes={routes} loading={routeLoading} empId={user.emp_id} />
       ) : (
         <RouteLoading />
       )}

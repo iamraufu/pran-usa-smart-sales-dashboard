@@ -431,6 +431,7 @@ cursor-pointer
                   >
                     {store.Outlet_Name}
                   </h2>
+                  <span className="text-xs text-gray-600">{store.Outlet_Code}</span>
 
                   <div className="flex gap-2 mt-2">
                     <span
