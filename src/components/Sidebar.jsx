@@ -24,6 +24,16 @@ export default function Sidebar({ open, setOpen }) {
       path: "/performance",
       icon: "🏆",
     },
+    {
+      name: "Stores",
+      path: "/stores",
+      icon: "🏪",
+    },
+    {
+      name: "Store Map",
+      path: "/store-map",
+      icon: "🗺️",
+    },
   ];
 
   return (

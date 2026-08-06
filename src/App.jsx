@@ -8,6 +8,8 @@ import Sidebar from "./components/Sidebar";
 import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
 import Performance from "./pages/Performance";
+import Stores from "./pages/Stores";
+import StoreMap from "./pages/StoreMap";
 
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
@@ -66,6 +68,8 @@ ${sidebarOpen ? "md:ml-72" : "md:ml-24"}
             <Route path="/users" element={<Users />} />
             <Route path="/users/:id" element={<UserProfile />} />
             <Route path="/performance" element={<Performance />} />
+            <Route path="/stores" element={<Stores />} />
+            <Route path="/store-map" element={<StoreMap />} />
           </Routes>
         </main>
       </div>
